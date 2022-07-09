@@ -59,9 +59,26 @@ body {
 
 .no-account {
     font-size: small;
+    line-height: 0.5;
 }
 
 .google-sign-in {
     font-size: xx-small;
     line-height: 0.5;
 }
+
+/* .input-login {
+    display:inline-block;
+    width:130px;
+    margin:0;
+    margin:0 0 7px 0;
+}
+
+.namefield-login {
+    display:inline-block;
+    width:80px;
+    text-align: right;
+    padding: 14px 10px 0 0;
+    margin:0 0 7px 0;
+} */
+
