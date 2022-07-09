@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Medias {% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <nav id="search-media-nav">
+        <form id="search-media-form">
+            <label for="search-btn">What are you looking for?</label>
+            <input type="text" id="search-btn" name="search-btn">
+            <input type="submit" value="Search">
+        </form>
+
+        <div class="row media-response">
+        </div>
+
+
+    </nav>
+
+
+
+    <nav id="popular-medias-nav">
+        <h3>MOST POPULAR MOVIES</h3>
+        <div class="row popular-movies"></div>
+        <h3>MOST POPULAR SHOWS</h3>
+        <div class="row popular-shows"></div>
+    </nav>
+</div>
+<script src="/static/js/medias.js"></script>
+{% endblock %}

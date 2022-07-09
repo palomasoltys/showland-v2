@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} ShowLand {% endblock %}
+
+{% block head %} {% endblock %}
+
+{% block body %}
+
+<div>
+    <div>
+        <h2>The right place to chat about your favorite movies and shows are here</h2>
+        <p>Comment, Review, Save for later, Follow your friends and much more</p>
+        {%if 'user_email' in session %}
+        <a href="/profile/{{user.user_id}}" class="btn btn-outline-danger" id="profile-link">Check your Profile</a>
+        {% else %}
+        <a href="/signup" class="btn btn-outline-danger" id="join-showland">Join ShowLand Today</a>
+        {%endif%}
+
+    </div>
+</div>
+
+{% endblock %}

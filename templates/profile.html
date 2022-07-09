@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %} Your profile {% endblock %}
+
+{% block head %} {% endblock %}
+
+{% block body %}
+{%if user.email == session['user_email']%}
+<h2>Hey {{user.full_name}}!</h2>
+{%else%}
+<h2>{{user.full_name}}'s profile</h2>
+{%if is_following %}
+{% set ns = namespace(follow='Unfollow') %}
+
+{%else%}
+{% set ns.follow = 'Unfollow' %}
+
+{%endif%}
+<button type="button" id="follow-user" value="{{user.user_id}}" class="btn btn-outline-danger follow-btn">{{ns.follow}}</button>
+{%endif%}
+
+
+
+<h3>Activity</h3>
+<ul>
+    {% for item in user.comments %}
+    {% if item.comment|length > 0 %}
+    <li>
+        {%if item.media.imdb_id[0] == 't' %}
+        <p><a href="/media/details/{{item.media.imdb_id}}">{{item.media.title}}</a></p>
+        {%elif item.media.media_type == 'series'%}
+        <p><a href="/media/popular/shows/details/{{item.media.imdb_id}}">{{item.media.title}}</a></p>
+        {%else%}
+        <p><a href="/media/popular/movies/details/{{item.media.imdb_id}}">{{item.media.title}}</a></p>
+        {%endif%}
+        <img src="{{item.media.poster_path}}">
+        <p>Review: {{item.review}}</p>
+        <p>Comment: {{item.comment}}</p>
+
+        {%for like in item.likes%}
+        {%if like == item.likes[0]%}
+        <p>Likes: {{like.query.filter_by(comment_id=like.comment_id).count()}}</p>
+        {%endif%}
+        {%endfor%}
+        <p hidden>{{item.media.imdb_id}}</p>
+    </li>
+    {%endif%}
+    {%endfor%}
+</ul>
+
+<h3>Saved for later</h3>
+{%for media in user.savelater%}
+<ul>
+    <li>
+        {%if media.media.imdb_id[0] == 't' %}
+        <p><a href="/media/details/{{media.media.imdb_id}}">{{media.media.title}}</a></p>
+        {%elif media.media.media_type == 'series'%}
+        <p><a href="/media/popular/shows/details/{{media.media.imdb_id}}">{{media.media.title}}</a></p>
+        {%elif media.media.media_type == 'movie'%}
+        <p><a href="/media/popular/movies/details/{{media.media.imdb_id}}">{{media.media.title}}</a></p>
+        {%endif%}
+        <p><img src="{{media.media.poster_path}}">"</p>
+        {%endfor%}
+    </li>
+</ul>
+{%if user.email == session['user_email']%}
+<h2>Friends Activity</h2>
+{%if user.following|length == 0%}
+<p><i>You are not following anyone</i></p>
+{%else%}
+<p>What are you friends thoughts about their favorite movie or show?</p>
+<ul>
+    <li>
+        {%for following in user.following%}
+        <p>{{following.full_name}}</p>
+        {%for comment in following.comments%}
+        {%if comment.media.imdb_id[0] == 't' %}
+        <p><a href="/media/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a></p>
+        {%elif comment.media.media_type == 'series'%}
+        <p><a href="/media/popular/shows/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a></p>
+        {%elif comment.media.media_type == 'movie'%}
+        <p><a href="/media/popular/movies/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a></p>
+        {%endif%}
+        <img src="{{comment.media.poster_path}}">
+        <p>Review: {{comment.review}}</p>
+        <p>Comment: {{comment.comment}}</p>
+    </li>
+    {%endfor%}
+    {%endfor%}
+</ul>
+{%endif%}
+{%endif%}
+
+<script src="/static/js/profile.js"> </script>
+
+{%endblock%}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %} {{show.show_title}} {% endblock %}
+
+{% block head %}
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body %}
+
+<h2>MEDIA DETAILS HERE</h2>
+<div class="show-details">
+    <h2 id="show-title">{{show.show_title}}</h2>
+    <p id="show-year">{{show.show_release_date}}</p>
+    <p id="show-overview">{{show.show_overview}}</p>
+
+    <!-- Button for Save for Later List -->
+    {%if 'user_email' in session %}
+    {% set nspace = namespace(save='Save for Later') %}
+    {%for data in user.savelater%}
+    {%if data.media.imdb_id == show.show_id%}
+    {% set nspace.save = 'Remove from List' %}
+    {%endif%}
+    {%endfor%}
+    <button type="button" id="save-later{{show.show_id}}" value="{{show.show_id}}" class="btn btn-outline-danger save-for-later-btn">{{nspace.save}}</button>
+
+    {%endif%}
+
+
+    {%if show.show_poster_path != None%}
+    <img src="https://image.tmdb.org/t/p/w300{{show.show_poster_path}}" id="show-poster-path">
+    {% else %}
+    <img src="https://imgc.artprintimages.com/img/print/epicstockmedia-sunset-waterfall-amazing-nature-landscape_u-l-q19ye1d0.jpg" id="show-poster-path">
+    {%endif%}
+    <p hidden id="show-id">{{show.show_id}}</p>
+</div>
+
+<div class="comment-area">
+    <!-- Button trigger modal to comment and rate a media -->
+    <label for="comment-show-btn">Have you already watched it?</label>
+    {%if 'user_email' in session %}
+    <button type="button" class="btn btn-primary" id="comment-show-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Drop your comment here
+    </button>
+    {% else %}
+    <form action="/login">
+        <button type="submit">Log In to comment</button>
+    </form>
+    {%endif%}
+
+    <!-- Modal for Rate and Comment a Media-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Review {{show.show_title}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="comment-form-show">
+                        <label for="rate-show">Rate ({{show.show_title}}):</label>
+                        <select name="rate-show" id="rate-show">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <label for="comment-show">Leave a comment:</label>
+                        <input type="text" id="comment-show" name="comment-show">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit-comment-btn">Submit Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="show-details-div">
+    <h3>Latest comments</h3>
+    {%if 'user_email' in session%}
+    <p hidden id="session-user-email">{{session['user_email']}}</p>
+    {%endif%}
+
+    <!-- Displaying media comments -->
+    <div id="comment-container" class="comment-block comment-div">
+        {%if show_info != None %}
+        {%for item in show_info.comments%}
+        <div id="{{item.comment_id}}" class="comment-block">
+            <a href="/profile/{{item.user.user_id}}/friend" id="show-user-fullname-p">{{item.user.full_name}}</a>
+            <p id="show-review-p">{{item.review}}</p>
+            <p id="show-comment-p">{{item.comment}}</p>
+            <p hidden>{{item.comment_id}}</p>
+            <p hidden id="show-user-id-p">{{item.user.user_id}}</p>
+            <p id="number-likes-{{item.comment_id}}-p">{{item.likes|length}}</p>
+
+
+            {%if 'user_email' in session %}
+
+            <!-- Delete button for comments -->
+            {%if item.user.user_id == user.user_id%}
+            <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn">Delete</button>
+            {%endif%}
+
+            {% set ns = namespace(like='Like') %}
+            {%for like in item.likes%}
+            {%if like.user.email == session['user_email']%}
+            {% set ns.like = 'Unlike' %}
+            {%endif%}
+            {%endfor%}
+            <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn">{{ns.like}} </button>
+            {%endif%}
+        </div>
+        {%endfor%}
+        {%endif%}
+    </div>
+</div>
+{%if show_info == None or show_info.comments|length == 0%}
+<p id="no-comment"><i>Be the first one to comment</i></p>
+
+{%endif%}
+</div>
+<script src="/static/js/show-popular-details.js"> </script>
+
+{% endblock %}
