@@ -624,7 +624,7 @@ def login_user():
 @app.route('/login/google-oauth', methods=['POST'])
 def google_OAuth():
 
-    GOOGLE_CLIENT_ID = os.environ['GOOGLE_CLIENT_ID']
+    #GOOGLE_CLIENT_ID = os.environ['GOOGLE_CLIENT_ID']
     
     # client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
 
@@ -655,6 +655,7 @@ def google_OAuth():
 
         if user:
             flash(f"Hi, {full_name}")
+            session['user_email'] = email
             return redirect('/')
         else:
             user = crud.create_user(full_name=full_name,email=email, password=password)    
