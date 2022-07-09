@@ -37,9 +37,6 @@ def all_medias():
     """Display all medias"""
     return render_template('medias.html')
 
-# API Request to show the most popular movies
-
-
 @app.route('/media/popular/movies')
 def all_popular_movies():
     """Display all popular movies"""
