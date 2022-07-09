@@ -6,21 +6,26 @@
 
 
 {% block body %}
-
+<div class="bg-area"></div>
 <div id="login-page" class="d-flex align-items-center justify-content-center">
-    <section>
-        <form action="/login" method="POST">
-            <img src="/static/img/showland-logo.svg" id="showland-logo" class="showland-logo">
-            <p>Email <input type="text" name="email" required></p>
-            <p>Password <input type="password" name="password" required></p>
-            <p><input type="submit" class="btn btn-outline-danger" value="Log In"></p>
-        </form>
-        <p>Doesn't have an account yet? <a href="/signup">Create one here</a></p>
-        <!-- Google OAuth -->
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <div id="g_id_onload" data-client_id="369785474126-1uk5r5412uojj84mks2ro2ghu4ggi599.apps.googleusercontent.com" data-login_uri="http://localhost:5000/login/google-oauth" data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+    <section class="section-login">
+        <div class="login-inner-page">
+            <form action="/login" method="POST">
+                <img src="/static/img/showland-logo-black.png" id="showland-logo" class="showland-logo">
+                <p class="login-p">Email <input type="text" name="email" required></p>
+                <p class="login-p">Password <input type="password" name="password" required></p>
+                <p class="login-p"><input type="submit" class="btn btn-outline-danger" value="Log In"></p>
+            </form>
+            <p class="login-p no-account">Doesn't have an account yet? <a href="/signup">Create one here</a></p> <br>
+            <p class="login-p google-sign-in">──────────────────────────────────</p>
+            <p class="login-p google-sign-in">OR SIGN IN WITH GOOGLE</p><br>
+
+            <!-- Google OAuth -->
+            <script src="https://accounts.google.com/gsi/client" async defer></script>
+            <div id="g_id_onload" data-client_id="369785474126-1uk5r5412uojj84mks2ro2ghu4ggi599.apps.googleusercontent.com" data-login_uri="http://localhost:5000/login/google-oauth" data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+            </div>
         </div>
     </section>
 </div>
