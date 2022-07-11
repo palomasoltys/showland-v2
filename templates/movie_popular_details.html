@@ -10,7 +10,7 @@
 {% block body %}
 
 <h2>MEDIA DETAILS HERE</h2>
-<div class="movie-details">
+<div class="movie-details" aria-label="Movie details">
     <h2 id="movie-title">{{movie.movie_title}}</h2>
     <p id="movie-year">{{movie.movie_release_date}}</p>
     <p id="movie-overview">{{movie.movie_overview}}</p>
@@ -23,7 +23,7 @@
     {% set nspace.save = 'Remove from List' %}
     {%endif%}
     {%endfor%}
-    <button type="button" id="save-later{{movie.movie_imdb_id}}" value="{{movie.movie_imdb_id}}" class="btn btn-outline-danger save-for-later-btn">{{nspace.save}}</button>
+    <button type="button" id="save-later{{movie.movie_imdb_id}}" value="{{movie.movie_imdb_id}}" class="btn btn-outline-danger save-for-later-btn" aria-label="Save for later">{{nspace.save}}</button>
 
     {%endif%}
 
@@ -41,12 +41,12 @@
     <!-- Button trigger modal to comment and rate a media -->
     <label for="comment-movie-btn">Have you already watched it?</label>
     {%if 'user_email' in session %}
-    <button type="button" class="btn btn-primary" id="comment-movie-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" id="comment-movie-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Comment">
         Drop your comment here
     </button>
     {% else %}
     <form action="/login">
-        <button type="submit">Log In to comment</button>
+        <button type="submit" aria-label="Log In to comment">Log In to comment</button>
     </form>
     {%endif%}
 
@@ -61,7 +61,7 @@
                 <div class="modal-body">
                     <form id="comment-form-movie">
                         <label for="rate-movie">Rate ({{movie.movie_title}}):</label>
-                        <select name="rate-movie" id="rate-movie">
+                        <select name="rate-movie" id="rate-movie" aria-label="Rate movie">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -69,8 +69,8 @@
                             <option value="5">5</option>
                         </select>
                         <label for="comment-movie">Leave a comment:</label>
-                        <input type="text" id="comment-movie" name="comment-movie">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit-comment-btn">Submit Comment</button>
+                        <input type="text" id="comment-movie" name="comment-movie" aria-label="Comment movie">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit-comment-btn" aria-label="Submit comment">Submit Comment</button>
                     </form>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
             <!-- Delete button for comments -->
             {%if item.user.user_id == user.user_id%}
-            <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn">Delete</button>
+            <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn" aria-label="Delete comment">Delete</button>
             {%endif%}
 
             <!-- Like/Unlike button for comments -->
@@ -110,7 +110,7 @@
             {% set ns.like = 'Unlike' %}
             {%endif%}
             {%endfor%}
-            <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn">{{ns.like}}</button>
+            <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn" aria-label="Delete comment">{{ns.like}}</button>
 
             {%endif%}
         </div>

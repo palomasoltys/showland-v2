@@ -16,7 +16,7 @@
 {% set ns.follow = 'Unfollow' %}
 
 {%endif%}
-<button type="button" id="follow-user" value="{{user.user_id}}" class="btn btn-outline-danger follow-btn">{{ns.follow}}</button>
+<button type="button" id="follow-user" value="{{user.user_id}}" class="btn btn-outline-danger follow-btn" aria-label="Follow user">{{ns.follow}}</button>
 {%endif%}
 
 

@@ -23,7 +23,7 @@
     {% set nspace.save = 'Remove from List' %}
     {%endif%}
     {%endfor%}
-    <button type="button" id="save-later{{show.show_id}}" value="{{show.show_id}}" class="btn btn-outline-danger save-for-later-btn">{{nspace.save}}</button>
+    <button type="button" id="save-later{{show.show_id}}" value="{{show.show_id}}" class="btn btn-outline-danger save-for-later-btn" aria-label="Save for later">{{nspace.save}}</button>
 
     {%endif%}
 
@@ -40,12 +40,12 @@
     <!-- Button trigger modal to comment and rate a media -->
     <label for="comment-show-btn">Have you already watched it?</label>
     {%if 'user_email' in session %}
-    <button type="button" class="btn btn-primary" id="comment-show-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary" id="comment-show-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="Comment movie">
         Drop your comment here
     </button>
     {% else %}
     <form action="/login">
-        <button type="submit">Log In to comment</button>
+        <button type="submit" aria-label="Log In to comment">Log In to comment</button>
     </form>
     {%endif%}
 
@@ -60,7 +60,7 @@
                 <div class="modal-body">
                     <form id="comment-form-show">
                         <label for="rate-show">Rate ({{show.show_title}}):</label>
-                        <select name="rate-show" id="rate-show">
+                        <select name="rate-show" id="rate-show" aria-label="Rate show">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -69,7 +69,7 @@
                         </select>
                         <label for="comment-show">Leave a comment:</label>
                         <input type="text" id="comment-show" name="comment-show">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit-comment-btn">Submit Comment</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="submit-comment-btn" aria-label="Submit comment">Submit Comment</button>
                     </form>
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
             <!-- Delete button for comments -->
             {%if item.user.user_id == user.user_id%}
-            <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn">Delete</button>
+            <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn" aria-label="Delete comment">Delete</button>
             {%endif%}
 
             {% set ns = namespace(like='Like') %}
@@ -108,7 +108,7 @@
             {% set ns.like = 'Unlike' %}
             {%endif%}
             {%endfor%}
-            <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn">{{ns.like}} </button>
+            <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn" aria-label="Like comment">{{ns.like}} </button>
             {%endif%}
         </div>
         {%endfor%}

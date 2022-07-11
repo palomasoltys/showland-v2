@@ -24,16 +24,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" id="navbar-home" href="/">Home</a>
-                    <a class="nav-link" id="navbar-medias" href="/media">Movies & Shows</a>
+                    <a class="nav-link active" aria-current="page" id="navbar-home" href="/" aria-label="Home">Home</a>
+                    <a class="nav-link" id="navbar-medias" href="/media" aria-label="Movies and shows">Movies & Shows</a>
                     <!-- <a class="nav-link" id="navbar-shows" href="/shows">Shows</a> -->
                     {%if 'user_email' not in session%}
-                    <a class="nav-link" id="navbar-login" href="/login">Log In</a>
-                    <a class="nav-link" id="navbar-signup" href="/signup">Sign Up</a>
+                    <a class="nav-link" id="navbar-login" href="/login" aria-label="Log In">Log In</a>
+                    <a class="nav-link" id="navbar-signup" href="/signup" aria-label="Sign up">Sign Up</a>
                     {%else%}
-                    <a class="nav-link" id="navbar-login" href="/login">Profile</a>
-                    <a class="nav-link" id="navbar-logout" href="/logout">Log Out</a>
-                    <a class="nav-link" id="navbar-account" href="/profile">Logged in as {{session['user_email']}}</a>
+                    <a class="nav-link" id="navbar-login" href="/login" aria-label="Your profile">Profile</a>
+                    <a class="nav-link" id="navbar-logout" href="/logout" aria-label="Log Out">Log Out</a>
 
                     {%endif%}
                 </div>

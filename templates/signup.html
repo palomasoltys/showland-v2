@@ -6,17 +6,17 @@
 
 {% block body %}
 <div id="signup-page" class="d-flex align-items-center justify-content-center">
-    <section>
+    <section aria-label="Sign up form">
         <form action="/signup" method="POST">
             <img src="/static/img/showland-logo.svg" id="showland-logo" class="showland-logo">
-            <p>Full name <input type="text" name="full_name" required></p>
-            <p>Email <input type="text" name="email" required></p>
-            <p>Password <input type="password" name="password" required></p>
-            <p>Confirm Password <input type="password" name="confirm-password" required></p>
-            <p><input type="submit" class="btn btn-outline-danger" value="Create an Account"></p>
+            <p>Full name <input type="text" name="full_name" aria-label="Your name" required></p>
+            <p>Email <input type="text" name="email" aria-label="Your email" required></p>
+            <p>Password <input type="password" name="password" aria-label="Your password" required></p>
+            <p>Confirm Password <input type="password" name="confirm-password" aria-label="Confirm passord" required></p>
+            <p><input type="submit" class="btn btn-outline-danger" value="Create an Account" aria-label="Create an account"></p>
         </form>
 
-        <p>Already have an account? <a href="/login">Log in here.</a></p>
+        <p>Already have an account? <a href="/login" aria-label="Log In here">Log in here.</a></p>
     </section>
 </div>
 {% endblock %}

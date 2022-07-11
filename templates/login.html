@@ -16,14 +16,14 @@
             <form action="/login" method="POST">
                 <img src="/static/img/showland-logo-black.png" id="showland-logo" class="showland-logo">
                 <!-- <label for="email-login" class="namefield-login"></label> -->
-                <p class="login-p"><input id="email-login" type="text" class="input-login" placeholder="Email" name="email" required></p>
+                <p class="login-p"><input id="email-login" type="text" class="input-login" placeholder="Email" name="email" aria-label="Your email" required></p>
                 <!-- <label for="password-login" class="namefield-login"></label> -->
-                <p class="login-p"><input id="password-login" type="password" class="input-login" placeholder="Password" name="password" required></p>
+                <p class="login-p"><input id="password-login" type="password" class="input-login" placeholder="Password" name="password" aria-label="Your password" required></p>
 
-                <p class="login-p"><input type="submit" class="btn btn-outline-danger" value="Log In"></p>
+                <p class="login-p"><input type="submit" class="btn btn-outline-danger" value="Log In" aria-label="Submit"></p>
 
             </form>
-            <p class="login-p no-account">Doesn't have an account yet? <a href="/signup">Create one here</a></p> <br>
+            <p class="login-p no-account">Doesn't have an account yet? <a href="/signup" aria-label="Create your account">Create one here</a></p> <br>
             <p class="login-p google-sign-in">──────────────────────────────────</p>
             <p class="login-p google-sign-in">OR SIGN IN WITH GOOGLE</p><br>
 
