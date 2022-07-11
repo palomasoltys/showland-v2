@@ -122,22 +122,23 @@ class Like(db.Model):
         return f"<Like like_id = {self.like_id} / comment_id = {self.comment_id} / user_id = {self.user_id}>"
 
 
+def example_data():
+    """Create some sample data."""
+
+    # In case this is run more than once, empty out existing data
+    User.query.delete()
+
+
+    # Add sample users
+    teste2 = User(full_name="teste2", email="teste2@teste.com", password="teste")
+    teste3 = User(full_name="teste3", email="teste3@teste.com", password="teste")
+    teste5 = User(full_name="teste5", email="teste5@teste.com", password="teste")
+
+    db.session.add_all([teste2, teste3, teste5])
+    db.session.commit()
 
 
 
-
-
-# THIS TABLE IS GOING TO BE IMPLEMENTED LATER
-# class Follow(db.Model):
-
-#     __tablename__ = "follows"
-#     follow_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey(
-#         "users.user_id"), nullable=False)
-#     user_id_to_follow = db.Column(
-#         db.Integer, db.ForeignKey("users.user_id"), nullable=False)
-#     def __repr__(self):
-#         return f"Follow <Follow follow_id = {self.follow_id} / user_id = {self.user_id} / user_id_to_follow = {self.user_id_to_follow}>"
 if __name__ == "__main__":
     from server import app
 
