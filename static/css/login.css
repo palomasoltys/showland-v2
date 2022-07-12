@@ -17,13 +17,14 @@ body {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
+    padding: 10px;
     
 }
 
 .section-login {
-    background-color: #f2f2f2;
+    background-color: #fffcf2;
     border-radius: 30px;
     width: 400px;
     height: 500px;
@@ -60,6 +61,7 @@ body {
 .no-account {
     font-size: small;
     line-height: 0.5;
+    padding: 15px;
 }
 
 .google-sign-in {
@@ -67,18 +69,34 @@ body {
     line-height: 0.5;
 }
 
-/* .input-login {
-    display:inline-block;
-    width:130px;
-    margin:0;
-    margin:0 0 7px 0;
+.flash-msg {
+    opacity: 4;
+    font-size: large;
+    font-weight: bold;
+    color:white;
+    text-align: center;
 }
 
-.namefield-login {
-    display:inline-block;
-    width:80px;
-    text-align: right;
-    padding: 14px 10px 0 0;
-    margin:0 0 7px 0;
-} */
+
+.btn {
+    background: #eb5e28;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    width: 65%;
+
+}
+
+input {
+    width: 65%;
+}
+
+.navbar-login {
+    background-color: #fffcf2;
+    border-color: #fffcf2;
+
+}
+
 
