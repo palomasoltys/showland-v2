@@ -8,12 +8,20 @@
 
 body {
     background-color: black;
+    /* background-image: url(/static/img/interestellar1-bg\ .png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+
+}
+
+body.container-homepage {
     background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-
 }
 
 .homepage-content {
