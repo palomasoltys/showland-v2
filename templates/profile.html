@@ -2,7 +2,9 @@
 
 {% block title %} Your profile {% endblock %}
 
-{% block head %} {% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+{% endblock %}
 
 {% block body %}
 {%if user.email == session['user_email']%}

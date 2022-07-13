@@ -5,7 +5,7 @@
 
 body {
     background-color: black;
-    background-image: url(/static/img/bg-blurr.png);
+    background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,22 +17,23 @@ body {
     display: block;
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
-    height: 90%;
-    padding: 10px;
+    width: 70%;
+    height: 70%;
+    padding: 30px;
     
 }
 
 .section-login {
-    background-color: #fffcf2;
-    border-radius: 30px;
+    background-color: #FFFBDB;
+    background: rgba(255, 252, 242, 0.2); /* translucent */
+    border-radius: 5px;
     width: 400px;
     height: 500px;
     justify-content: center;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    border: 5px solid #ffffff;
+    /* border: 1px solid #ffffff; */
     padding: 10px;
 }
 
@@ -56,17 +57,23 @@ body {
 
 .login-p {
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 .no-account {
     font-size: small;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
     line-height: 0.5;
     padding: 15px;
+    color: white;
 }
 
 .google-sign-in {
     font-size: xx-small;
     line-height: 0.5;
+    color: white;
 }
 
 .flash-msg {
@@ -91,6 +98,8 @@ body {
 
 input {
     width: 65%;
+    /* font-family: 'Open Sans', sans-serif; */
+
 }
 
 .navbar-login {
@@ -99,4 +108,15 @@ input {
 
 }
 
+p {
+    font-family: 'Open Sans', sans-serif;
+    
+}
 
+input::placeholder {
+    font-size: small;
+}
+
+a {
+    color: white;
+}
