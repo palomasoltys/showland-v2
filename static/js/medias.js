@@ -43,48 +43,73 @@ fetch('/media/popular/movies')
       const poster_path = d.poster_path;
       const year = d.release_date;
       const id = d.id;
-      const movie = `<li><h2><a href="/media/popular/movies/details/${id} id="movie-details-${id}">${title}</a><p>${year}</p></h2> <img src="https://image.tmdb.org/t/p/w300${poster_path}" </li>`;
+      const movie = `<div>
+                      <div class="slide">
+                        <div class="slide-img slide-link">
+                          <a href="/media/popular/movies/details/${id} id="movie-details-${id}">Movie Details</a>
+                        </div>
+                        <br>
+                        <div>
+                        <a href="/media/popular/movies/details/${id} id="movie-details-${id}">${title}</a>
+                          <p class="year">${year}</p>
+                        </div>
+                        <div class="slide-img"> 
+                          <img src="https://image.tmdb.org/t/p/w300${poster_path}">
+                        </div>  
+                      </div>
+                      </div>`;
       document
         .querySelector('.popular-movies')
         .insertAdjacentHTML('beforeend', `<div class="col-4">${movie}</div>`);
     }
+    let slider = tns({
+      container: '.my-slider',
+      slideBy: '3',
+      speed: 400,
+      nav: false,
+      autoplay: true,
+      controls: false,
+      autoplayButtonOutput: false,
+      // autoWidth: true,
+      responsive: {
+        1600: {
+          items: 4,
+          gutter: 20,
+        },
+        1024: {
+          items: 3,
+          gutter: 20,
+        },
+        768: {
+          items: 2,
+          gutter: 20,
+        },
+        480: {
+          items: 1,
+        },
+      },
+    });
   });
 
-// Receiving data from the API and displaying the most popular shows
-fetch('/media/popular/shows')
-  .then((response) => response.json())
-  .then((data) => {
-    for (const d of data.results) {
-      const title = d.name;
-      const poster_path1 = d.poster_path;
-      let poster_path = `https://image.tmdb.org/t/p/w300${poster_path1}`;
-      const year = d.first_air_date;
-      const id = d.id;
+// // Receiving data from the API and displaying the most popular shows
+// fetch('/media/popular/shows')
+//   .then((response) => response.json())
+//   .then((data) => {
+//     for (const d of data.results) {
+//       const title = d.name;
+//       const poster_path1 = d.poster_path;
+//       let poster_path = `https://image.tmdb.org/t/p/w300${poster_path1}`;
+//       const year = d.first_air_date;
+//       const id = d.id;
 
-      if (poster_path.includes('https://image.tmdb.org/t/p/w300null')) {
-        poster_path =
-          'https://imgc.artprintimages.com/img/print/epicstockmedia-sunset-waterfall-amazing-nature-landscape_u-l-q19ye1d0.jpg';
-      }
+//       if (poster_path.includes('https://image.tmdb.org/t/p/w300null')) {
+//         poster_path =
+//           'https://imgc.artprintimages.com/img/print/epicstockmedia-sunset-waterfall-amazing-nature-landscape_u-l-q19ye1d0.jpg';
+//       }
 
-      const show = `<li><h2><a href="/media/popular/shows/details/${id} id="show-details-${id}">${title}</a><p>${year}</p></h2> <img src="${poster_path}" </li>`;
-      document
-        .querySelector('.popular-shows')
-        .insertAdjacentHTML('beforeend', `<div class="col-4">${show}</div>`);
-    }
-  });
-
-// function send_movie_data_to_server(title, poster_path, year, overview, id) {
-//   fetch(`/movies/${id}/details`, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       title: title,
-//       poster_path: poster_path,
-//       year: year,
-//       overview: overview,
-//       id: id,
-//     }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
+//       const show = `<li><h2><a href="/media/popular/shows/details/${id} id="show-details-${id}">${title}</a><p>${year}</p></h2> <img src="${poster_path}" </li>`;
+//       document
+//         .querySelector('.popular-shows')
+//         .insertAdjacentHTML('beforeend', `<div class="col-4">${show}</div>`);
+//     }
 //   });
-// }

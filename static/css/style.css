@@ -1,3 +1,5 @@
+
+/* NAV BAR */
 .navbar-collapse {
     background-color: #fffcf2;
 }
@@ -6,16 +8,18 @@
     border-color: #fffcf2;
 }
 
+/* BODY */
 body {
     background-color: black;
-    /* background-image: url(/static/img/interestellar1-bg\ .png);
+    background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; */
+    background-size: cover;
 
 }
 
+/* BODY HOMEPAGE */
 body.container-homepage {
     background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
@@ -24,6 +28,7 @@ body.container-homepage {
     background-size: cover;
 }
 
+/* HOMEPAGE */
 .homepage-content {
     background-color: black;
     background: rgba(255, 252, 242, 0.2);
@@ -79,8 +84,93 @@ p {
     margin-bottom: 1rem;
     margin-left: 140px;
     margin-right: 138px;
+    color:#eb5e28
 }
 
 a {
     color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* MEDIA */
+h1, h2, h3, h4 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    color:#eb5e28
+}
+
+h2 {
+    font-weight: bold;
+    width: 100%;
+}
+
+/* MOVIE SLIDER */
+#slider * {
+    margin: 0;
+}
+
+#slider {
+    background-color: black;
+    background: rgba(0, 0, 0, 0.7); /* translucent */
+    height: 500px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-wrapper {
+    margin: auto;
+}
+.container {
+    width: 1600px;
+    margin: auto;
+    margin-left: auto;
+
+}
+
+.subcontainer {
+    width: 85%;
+    margin: auto;
+}
+
+p.year {
+    font-size: 0.8rem;
+}
+
+img {
+    border-radius: 5px;
+    width: 60%;
+    /* height: 275px; */
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.slide-img:hover {
+    box-shadow: 0 0 0 200px rgba(255, 252, 242, 0.8) insert;
+}
+
+.slide-img a {
+    opacity: 0;
+    text-decoration: none;
+    transform: scale(0);
+    transition: 0.8s;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.slide-img:hover a {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media(max-width: 1600px) {
+    .container {
+        width: 100%;
+    }
 }

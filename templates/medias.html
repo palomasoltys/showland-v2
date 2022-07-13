@@ -3,12 +3,14 @@
 {% block title %} Medias {% endblock %}
 
 {% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
 <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 {% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div class="container-movie">
     <nav id="search-media-nav" aria-label="Movies and Shows">
         <form id="search-media-form">
             <label for="search-btn">What are you looking for?</label>
@@ -25,8 +27,19 @@
 
 
     <nav id="popular-medias-nav">
-        <h3>MOST POPULAR MOVIES</h3>
-        <div class="row popular-movies"></div>
+        <section id="slider">
+            <div class="container">
+                <div class="subcontainer">
+                    <div class="slider-wrapper">
+                        <div>
+                            <h2>MOST POPULAR MOVIES</h2>
+                        </div>
+                        <br>
+                        <div class="row popular-movies my-slider"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <h3>MOST POPULAR SHOWS</h3>
         <div class="row popular-shows"></div>
     </nav>
