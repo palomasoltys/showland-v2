@@ -12,7 +12,7 @@
     <div class="homepage-content">
         <img src="/static/img/showland-logo-white.png" class="showland-logo">
         <h2 class="headline">The right place to chat about your favorite movies and shows are here</h2>
-        <p>Comment, Review, Save for later, Follow your friends and much more</p>
+        <p class="sub-headline">Comment, Review, Save for later, Follow your friends and much more</p>
         {%if 'user_email' in session %}
         <a href="/profile/{{user.user_id}}" class="btn btn-outline-danger" id="profile-link" aria-label="Your profile">Check your Profile</a>
         {% else %}

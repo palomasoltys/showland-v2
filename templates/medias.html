@@ -9,40 +9,68 @@
 {% endblock %}
 
 {% block body %}
+<div class="full-content">
+    <div class="container-movie">
+        <nav id="search-media-nav" aria-label="Movies and Shows">
+            <form id="search-media-form">
+                <p class="search"><label for="search-btn" class="search-label"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg> What are you looking for?
+                    </label></p>
+                <p class="search">
+                    <input type="text" id="search-btn" placeholder="Search for movies and shows" name="search-btn"=aria-label="Submit search">
+                </p>
 
-<div class="container-movie">
-    <nav id="search-media-nav" aria-label="Movies and Shows">
-        <form id="search-media-form">
-            <label for="search-btn">What are you looking for?</label>
-            <input type="text" id="search-btn" name="search-btn" aria-label="Submit search">
-            <input type="submit" value="Search">
-        </form>
+                <p class="search"><input type="submit" class="btn search-media" value="Search"></p>
+                <!-- <hr style="width:50%;text-align:left;margin-left:0;color:white;" class="divider-hr"> -->
+            </form>
 
-        <div class="row media-response">
-        </div>
+            <div class="row media-response">
+            </div>
 
 
-    </nav>
+        </nav>
 
 
 
-    <nav id="popular-medias-nav">
-        <section id="slider">
-            <div class="container">
-                <div class="subcontainer">
-                    <div class="slider-wrapper">
-                        <div>
-                            <h2>MOST POPULAR MOVIES</h2>
+        <nav id="popular-medias-nav">
+            <table width="100%">
+                <td>
+                    <hr />
+                </td>
+                <td class="popular-week" style="width:1px; padding: 0 10px; white-space: nowrap;">MOST POPULAR OF THE WEEK</td>
+                <td>
+                    <hr />
+                </td>
+            </table>
+            <section id="slider">
+                <div class="container">
+                    <div class="subcontainer">
+                        <div class="slider-wrapper">
+                            <div>
+                                <h4 class="popular">Movies</h4>
+                            </div>
+                            <br>
+                            <div class="row popular-movies my-slider-movies"></div>
                         </div>
-                        <br>
-                        <div class="row popular-movies my-slider"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <h3>MOST POPULAR SHOWS</h3>
-        <div class="row popular-shows"></div>
-    </nav>
+            </section>
+            <section id="slider">
+                <div class="container">
+                    <div class="subcontainer">
+                        <div class="slider-wrapper">
+                            <div>
+                                <h4 class="popular">Shows</h4>
+                            </div>
+                            <br>
+                            <div class="row popular-shows my-slider-shows"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </div>
 </div>
 <script src="/static/js/medias.js"></script>
 {% endblock %}
