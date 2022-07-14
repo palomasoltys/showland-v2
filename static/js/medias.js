@@ -16,20 +16,27 @@ searchMediaForm.addEventListener('submit', (evt) => {
       if (data.Response === 'False') {
         document.querySelector('.media-response').innerHTML = 'Media not found';
       } else {
+        document
+          .querySelector('.media-response')
+          .insertAdjacentHTML(
+            'afterbegin',
+            '<p class=results>YOUR RESULTS:</p>',
+          );
         for (const d of data.Search) {
           const title = d.Title;
           const poster_path = d.Poster;
           const year = d.Year;
           const id = d.imdbID;
           mediasIDs.push(id);
-          const media = `<li><h2><a href="/media/details/${id}" id="media-details-${id}">${title}</a><p>${year}</p></h2><img src="${poster_path}"> </li>`;
+          const media = `<li><h2><a href="/media/details/${id}" id="media-details-${id}">${title}</a><p class="year">${year}</p></h2><img src="${poster_path}"> </li>`;
           document
             .querySelector('.media-response')
             .insertAdjacentHTML(
               'beforeend',
-              `<div class="col-4">${media}</div>`,
+              `<div class="col-4 m-response">${media}</div>`,
             );
         }
+        document.getElementById('popular-medias-nav').style.display = 'none';
       }
     });
 });
@@ -46,12 +53,12 @@ fetch('/media/popular/movies')
       const id = d.id;
       const movie = `<div>
                       <div class="slide">
-                        <div>
+                        <div class="img-div">
                         <a href="/media/popular/movies/details/${id} id="movie-details-${id}">${title}</a>
-                          <p class="year">${year}</p>
                         </div>
                         <div class="slide-img"> 
                           <img src="https://image.tmdb.org/t/p/w300${poster_path}">
+                          <p class="year">${year}</p>
                         </div>  
                       </div>
                       </div>`;
@@ -107,12 +114,12 @@ fetch('/media/popular/shows')
 
       const show = `<div>
                       <div class="slide">
-                        <div> 
+                        <div class="img-div"> 
                         <a href="/media/popular/shows/details/${id} id="show-details-${id}">${title}</a> 
-                          <p class="year">${year}</p> 
                         </div>
                         <div class="slide-img">  
                           <img src="${poster_path}">
+                          <p class="year">${year}</p>                           
                         </div>
                       </div>
                     </div>  `;

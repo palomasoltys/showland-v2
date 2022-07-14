@@ -105,6 +105,8 @@ a {
     color: white;
     font-family: 'Open Sans', sans-serif;
     text-decoration: none;
+    font-size: 16px;
+    text-align: center !important;
 }
 
 /* MEDIA */
@@ -175,6 +177,7 @@ align-items:center;
 
 p.year {
     font-size: 0.8rem;
+    text-align: center !important;
 }
 
 img {
@@ -188,6 +191,7 @@ img {
     justify-content: center;
     align-items: center;
     transition: 0.5s;
+    margin: auto !important;
 }
 
 .slide-img:hover {
@@ -322,6 +326,27 @@ align-items:center;
     /* background-color: black; */
     /* background: rgba(0, 0, 0, 0.7); translucent */
     color: white;
-
 }
 
+/* MEDIA RESPONSE FROM SEARCH */
+.m-response {
+    width: 30%;
+}
+
+.media-response {
+    display:flex;
+justify-content:center;
+align-items:center;
+margin: auto;
+}
+
+.img-div {
+    margin: auto !important;
+    display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.results {
+    text-align: center;
+}
