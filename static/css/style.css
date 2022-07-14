@@ -144,7 +144,7 @@ align-items:center;
 }
 
 #slider {
-    height: 450px;
+    height: 410px;
     /* border: 1px solid black; */
     display: flex;
     justify-content: center;
@@ -179,7 +179,7 @@ p.year {
 
 img {
     border-radius: 5px;
-    width: 70%;
+    width: 65%;
     /* height: 275px; */
     background-position: center;
     background-size: cover;
@@ -219,7 +219,10 @@ img {
 #search-media-form {
     /* background-color: black; */
     /* background: rgba(0, 0, 0, 0.7); translucent */
-    height: 180px;
+    display:flex;
+justify-content:center;
+align-items:center;
+    height: 120px;
     color:#fffcf2;
     margin: auto;
 
@@ -234,9 +237,10 @@ input.search-media {
     font-size: 16px;
     font-weight: 700;
     margin: 24px 0 12px;
-    width: 13%;
+    width: 8%;
     padding: 2px;
-    margin-bottom: 80px;
+    line-height: 2;
+    margin-top: 0.7rem
 }
 
 .search-label {
@@ -245,7 +249,9 @@ input.search-media {
     font-size: 1.3rem;
     font-weight: 100;
     width: 350px;
-    margin-top: 40px;
+    text-align: end;
+    padding: 5px;
+
 }
 
 /* search input */
@@ -257,6 +263,7 @@ input.search-media {
     width: 300px;
     margin: 0;
     border-radius: 4px;
+    line-height: 2;
 
 }
 
@@ -315,6 +322,6 @@ align-items:center;
     /* background-color: black; */
     /* background: rgba(0, 0, 0, 0.7); translucent */
     color: white;
-    padding-top: 60px;
+
 }
 
