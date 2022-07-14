@@ -70,15 +70,15 @@ fetch('/media/popular/movies')
       // autoWidth: true,
       responsive: {
         1600: {
-          items: 2,
+          items: 4,
           gutter: 20,
         },
         1024: {
-          items: 2,
+          items: 3,
           gutter: 20,
         },
         768: {
-          items: 1,
+          items: 2,
           gutter: 20,
         },
         480: {
@@ -132,15 +132,15 @@ fetch('/media/popular/shows')
       // autoWidth: true,
       responsive: {
         1600: {
-          items: 2,
+          items: 4,
           gutter: 20,
         },
         1024: {
-          items: 2,
+          items: 3,
           gutter: 20,
         },
         768: {
-          items: 1,
+          items: 2,
           gutter: 20,
         },
         480: {

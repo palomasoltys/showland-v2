@@ -1,3 +1,7 @@
+/* html {
+    width: 100%;
+    height: 100%;
+} */
 
 /* NAV BAR */
 .navbar-collapse {
@@ -10,6 +14,7 @@
 
 /* BODY */
 body {
+    min-height: 100vh;
     background-color: black;
     background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
@@ -17,6 +22,15 @@ body {
     -o-background-size: cover;
     background-size: cover;
 
+}
+
+
+
+.full-content {
+    width: inherit;
+    height: inherit;
+    background-color: black; 
+    background: rgba(0, 0, 0, 0.8);    /* translucent */
 }
 
 /* BODY HOMEPAGE */
@@ -119,6 +133,10 @@ h2 {
 .slider-wrapper {
     margin: auto;
     margin-top: 50px;
+    display:flex;
+justify-content:center;
+align-items:center;
+
 }
 
 #slider * {
@@ -126,15 +144,13 @@ h2 {
 }
 
 #slider {
-    background-color: black;
-    background: rgba(0, 0, 0, 0.7); /* translucent */
-    height: 580px;
+    height: 450px;
     /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    float: left;
+    /* width: 50%;
+    float: left; */
 }
 
 
@@ -152,6 +168,9 @@ h2 {
     width: 85%;
     /* margin-left: 7.5%;
     margin-right: 7.5%; */
+    display:flex;
+justify-content:center;
+align-items:center;
 }
 
 p.year {
@@ -160,7 +179,7 @@ p.year {
 
 img {
     border-radius: 5px;
-    width: 60%;
+    width: 70%;
     /* height: 275px; */
     background-position: center;
     background-size: cover;
@@ -198,8 +217,8 @@ img {
 
 /* SEARCH MEDIA FORM */
 #search-media-form {
-    background-color: black;
-    background: rgba(0, 0, 0, 0.7); /* translucent */
+    /* background-color: black; */
+    /* background: rgba(0, 0, 0, 0.7); translucent */
     height: 180px;
     color:#fffcf2;
     margin: auto;
@@ -282,11 +301,20 @@ align-items:center;
     margin-top: 30px;
     color: white;
     font-weight: 100;
+    padding-bottom: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    /* top: 40%;
+    left: 48%;
+    position: absolute;  */
 }
+
 
 #popular-medias-nav {
     border-top: 50px;
-    background-color: black;
-    background: rgba(0, 0, 0, 0.7); /* translucent */
+    /* background-color: black; */
+    /* background: rgba(0, 0, 0, 0.7); translucent */
     color: white;
+    padding-top: 60px;
 }
+
