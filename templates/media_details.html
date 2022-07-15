@@ -99,48 +99,50 @@
         {%endif%}
 
         <!-- Displaying media comments -->
-        <div id="comment-container" class="comment-block comment-div">
+        <div id="comment-container" class="comment-block row comment-div">
 
             {%if media_info != None%}
             {%for item in media_info.comments%}
-            <div id="{{item.comment_id}}" class="comment-block">
-                <a href="/profile/{{item.user.user_id}}/friend" id="media-user-fullname-p">{{item.user.full_name}}</a>
-                <p hidden id="media-user-id">{{item.user.email}}</p>
-                {%if item.review == 1%}
-                <p id="media-review-p">⭐</p>
-                {%elif item.review == 2 %}
-                <p id="media-review-p">⭐⭐</p>
-                {%elif item.review == 3%}
-                <p id="media-review-p">⭐⭐⭐</p>
-                {%elif item.review == 4 %}
-                <p id="media-review-p">⭐⭐⭐⭐</p>
-                {%else%}
-                <p id="media-review-p">⭐⭐⭐⭐⭐</p>
-                {%endif%}
+            <div id="{{item.comment_id}}" class="comment-block col-4">
+                <div class="comment-item p-3">
+                    <a href="/profile/{{item.user.user_id}}/friend" id="media-user-fullname-p">{{item.user.full_name}}</a>
+                    <p hidden id="media-user-id">{{item.user.email}}</p>
+                    {%if item.review == 1%}
+                    <p id="media-review-p" class="comment-p">⭐</p>
+                    {%elif item.review == 2 %}
+                    <p id="media-review-p" class="comment-p">⭐⭐</p>
+                    {%elif item.review == 3%}
+                    <p id="media-review-p" class="comment-p">⭐⭐⭐</p>
+                    {%elif item.review == 4 %}
+                    <p id="media-review-p" class="comment-p">⭐⭐⭐⭐</p>
+                    {%else%}
+                    <p id="media-review-p" class="comment-p">⭐⭐⭐⭐⭐</p>
+                    {%endif%}
 
 
-                <p id="media-comment-p">{{item.comment}}</p>
-                <p hidden>{{item.comment_id}}</p>
-                <p hidden id="media-user-id-p">{{item.user.user_id}}</p>
-                <p id="number-likes-{{item.comment_id}}-p">{{item.likes|length}}</p>
+                    <p id="media-comment-p" class="comment-p">{{item.comment}}</p>
+                    <p hidden>{{item.comment_id}}</p>
+                    <p hidden id="media-user-id-p">{{item.user.user_id}}</p>
+                    <p id="number-likes-{{item.comment_id}}-p" class="comment-p">{{item.likes|length}}</p>
 
 
-                {%if 'user_email' in session %}
+                    {%if 'user_email' in session %}
 
-                <!-- Delete button for comments -->
-                {%if item.user.user_id == user.user_id%}
-                <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn btn-action" aria-label="Delete comment">Delete</button>
-                {%endif%}
+                    <!-- Delete button for comments -->
+                    {%if item.user.user_id == user.user_id%}
+                    <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn btn-action" aria-label="Delete comment">Delete</button>
+                    {%endif%}
 
-                <!-- Like/Unlike button for comments -->
-                {% set ns = namespace(like='Like') %}
-                {%for like in item.likes%}
-                {%if like.user.email == session['user_email']%}
-                {% set ns.like = 'Unlike' %}
-                {%endif%}
-                {%endfor%}
-                <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn btn-action" aria-label="Like/Unlike comment">{{ns.like}}</button>
-                {%endif%}
+                    <!-- Like/Unlike button for comments -->
+                    {% set ns = namespace(like='Like') %}
+                    {%for like in item.likes%}
+                    {%if like.user.email == session['user_email']%}
+                    {% set ns.like = 'Unlike' %}
+                    {%endif%}
+                    {%endfor%}
+                    <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn btn-action" aria-label="Like/Unlike comment">{{ns.like}}</button>
+                    {%endif%}
+                </div>
             </div>
             {%endfor%}
             {%endif%}

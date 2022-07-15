@@ -45,6 +45,7 @@ commentForm.addEventListener('submit', (evt) => {
         commentDiv = document.createElement('div');
         commentDiv.setAttribute('id', `${comment.comment_id}`);
         commentDiv.setAttribute('class', 'comment-div');
+        commentDiv.setAttribute('class', 'row');
       }
       const r = comment.review;
       console.log(typeof r);
@@ -62,14 +63,14 @@ commentForm.addEventListener('submit', (evt) => {
 
       commentDiv.insertAdjacentHTML(
         'afterbegin',
-        `<div id="${comment.comment_id}" class="comment-block">
+        `<div id="${comment.comment_id}" class="comment-block col-4"><div class="comment-item p-3">
         <a href="/profile/${comment.user_id}/friend" id="media-user-fullname-p">${comment.user_name}</a> 
-        <p id="media-review-p">${comment.review}</p> 
-        <p id="media-comment-p">${comment.comment}</p> 
-        <p id="number-likes-${comment.comment_id}-p">${comment.total_likes}</p> 
+        <p id="media-review-p" class="comment-p">${comment.review}</p> 
+        <p id="media-comment-p" class="comment-p">${comment.comment}</p> 
+        <p id="number-likes-${comment.comment_id}-p" class="comment-p">${comment.total_likes}</p> 
         <button type="button" id="delete${comment.comment_id}" value="${comment.comment_id}" class="btn btn-outline-danger delete-comment-btn btn-action">Delete</button>
         <button type="button" id="comment${comment.comment_id}-user${comment.user_id}" value="${comment.comment_id}" class="btn btn-outline-danger like-btn btn-action">Like</button> 
-        </div>`,
+        </div></div>`,
       );
 
       no_comment = document.querySelector('#no-comment');

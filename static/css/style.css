@@ -497,7 +497,7 @@ td {
 }
 
 .btn-action {
-    width: 5%;
+    width: 14%;
 }
 
 .bi-trash-fill {
@@ -506,4 +506,26 @@ td {
 
 .bi-hand-thumbs-up-fill {
     width: 15px !important;
+}
+
+/* LATEST COMMENTS */
+
+.comment-div {
+    /* border: 1px solid pink; */
+    margin-left: 130px;
+    margin-right: 130px;
+    margin-top: 30px;
+}
+
+.comment-item {
+    text-align: center;
+    background: rgba(255, 252, 242, 0.2);
+    border-radius: 50px;
+    color: white;
+}
+
+.comment-p {
+    margin: 0 !important;
+    color: white;
+    font-weight: 100;
 }
