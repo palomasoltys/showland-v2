@@ -127,11 +127,6 @@
 
                     {%if 'user_email' in session %}
 
-                    <!-- Delete button for comments -->
-                    {%if item.user.user_id == user.user_id%}
-                    <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn btn-action" aria-label="Delete comment">Delete</button>
-                    {%endif%}
-
                     <!-- Like/Unlike button for comments -->
                     {% set ns = namespace(like='Like') %}
                     {%for like in item.likes%}
@@ -139,9 +134,15 @@
                     {% set ns.like = 'Unlike' %}
                     {%endif%}
                     {%endfor%}
+                    <p id="number-likes-{{item.comment_id}}-p" class="comment-p n-likes">{{item.likes|length}}</p>
                     <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn btn-action" aria-label="Like/Unlike comment">{{ns.like}}</button>
                     {%endif%}
-                    <p id="number-likes-{{item.comment_id}}-p" class="comment-p n-likes">{{item.likes|length}}</p>
+
+                    <!-- Delete button for comments -->
+                    {%if item.user.user_id == user.user_id%}
+                    <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger delete-comment-btn btn-action" aria-label="Delete comment">Delete</button>
+                    {%endif%}
+
 
                 </div>
             </div>
