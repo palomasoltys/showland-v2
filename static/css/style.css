@@ -28,7 +28,7 @@ body {
 
 .full-content {
     width: inherit;
-    height: inherit;
+    min-height: 100vh;
     background-color: black; 
     background: rgba(0, 0, 0, 0.8);    /* translucent */
 }
@@ -346,7 +346,12 @@ margin: auto;
     display:flex;
     justify-content:center;
     align-items:center;
-    width: 40%;
+    width: 100%;
+}
+
+.img-div a {
+    width: 100% !important;
+
 }
 
 .img-div-2 img {
@@ -528,4 +533,48 @@ td {
     margin: 0 !important;
     color: white;
     font-weight: 100;
+}
+
+/* PROFILE */
+
+.ful-page {
+    background: rgba(0, 0, 0, 0.8);    /* translucent */
+
+}
+
+/* .save-for-later {
+    margin-left: 130px;
+    margin-right: 130px;
+} */
+
+.save-for-later img { 
+    width: 200px !important;
+    height: 285px !important;
+}
+
+.user-comments img {
+    width: 200px !important;
+    height: 285px !important;
+}
+
+.user-comments p{
+    margin: 0 !important;
+    color: white !important;
+}
+
+.rated {
+    color:#eb5e28
+}
+
+.activity {
+    width: 100%;
+}
+
+.no-follow {
+    margin-bottom: 0 !important;
+    color: white !important;
+}
+
+.user-g {
+    padding-top: 20px;
 }
