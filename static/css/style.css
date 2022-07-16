@@ -10,6 +10,8 @@
 .navbar-login {
     background-color: #fffcf2;
     border-color: #fffcf2;
+    padding: 0 !important;
+    padding-left: 10px !important;
 }
 
 /* BODY */
@@ -229,6 +231,8 @@ align-items:center;
     height: 120px;
     color:#fffcf2;
     margin: auto;
+    padding-top: 80px;
+    padding-bottom: 60px;
 
 
 }
@@ -252,7 +256,7 @@ input.search-media {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
     font-weight: 100;
-    width: 350px;
+    width: 250px;
     text-align: end;
     padding: 5px;
 
@@ -592,4 +596,17 @@ td {
     vertical-align: -webkit-baseline-middle;
     font-size: 15px;
     font-weight: 700;
+}
+
+.profile-btn {
+    width: 20% !important;
+}
+
+.flash-msg {
+    opacity: 4;
+    font-size: large;
+    font-weight: bold;
+    color:white !important;
+    text-align: center;
+    padding-top: 15px;
 }

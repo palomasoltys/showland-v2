@@ -72,10 +72,15 @@
 
                     {%for like in item.likes%}
                     {%if like == item.likes[0]%}
-                    <p>Likes: {{like.query.filter_by(comment_id=like.comment_id).count()}}</p>
+                    <p class="comment-p n-likes">{{like.query.filter_by(comment_id=like.comment_id).count()}}</p>
+
                     {%endif%}
                     {%endfor%}
+
+                    <button type="button" id="comment-{{item.comment_id}}-user-{{item.user_id}}" value="{{item.comment_id}}" class="btn like-btn btn-action profile-btn">Like</button>
+                    <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn delete-comment-btn btn-action profile-btn">Delete</button>
                     <p hidden>{{item.media.imdb_id}}</p>
+
                 </div>
             </div>
             {%endif%}

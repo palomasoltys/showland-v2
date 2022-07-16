@@ -67,9 +67,9 @@ commentForm.addEventListener('submit', (evt) => {
         <a href="/profile/${comment.user_id}/friend" id="media-user-fullname-p">${comment.user_name}</a> 
         <p id="media-review-p" class="comment-p">${comment.review}</p> 
         <p id="media-comment-p" class="comment-p">${comment.comment}</p> 
-        <p id="number-likes-${comment.comment_id}-p" class="comment-p">${comment.total_likes}</p> 
-        <button type="button" id="delete${comment.comment_id}" value="${comment.comment_id}" class="btn btn-outline-danger delete-comment-btn btn-action">Delete</button>
-        <button type="button" id="comment${comment.comment_id}-user${comment.user_id}" value="${comment.comment_id}" class="btn btn-outline-danger like-btn btn-action">Like</button> 
+        <p id="number-likes-${comment.comment_id}-p" class="comment-p n-likes">${comment.total_likes}</p> 
+        <button type="button" id="comment${comment.comment_id}-user${comment.user_id}" value="${comment.comment_id}" class="btn btn-outline-danger like-btn btn-action">Like</button>
+        <button type="button" id="delete${comment.comment_id}" value="${comment.comment_id}" class="btn btn-outline-danger delete-comment-btn btn-action">Delete</button> 
         </div></div>`,
       );
 
