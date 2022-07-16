@@ -11,10 +11,10 @@
 {%if user.email == session['user_email']%}
 <div class="full-content full-page">
     <div class="user-g mb-4">
-        <h2 style="padding-top: 20px;">Hey {{user.full_name}}!</h2>
+        <h2 style="padding-top: 50px;">Hey {{user.full_name}}!</h2>
 
         {%else%}
-        <h2 class="mb-0" style="padding-top: 20px; background: rgba(0, 0, 0, 0.8);"">{{user.full_name}}'s profile</h2>
+        <h2 class="mb-0" style="padding-top: 50px; background: rgba(0, 0, 0, 0.8);"">{{user.full_name}}'s profile</h2>
         <div class=" user-follow" style="background: rgba(0, 0, 0, 0.8);">
             {%if is_following %}
             {% set ns = namespace(follow='Unfollow') %}

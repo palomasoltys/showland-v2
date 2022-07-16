@@ -372,7 +372,7 @@ margin: auto;
 
 .title-year {
     /* border: 2px solid black; */
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 20px;
 }
 
@@ -436,7 +436,8 @@ margin: auto;
 }
 
 .save-for-later-btn:hover {
-    color: white !important;
+    color: #eb5e28 !important;
+    background-color: #fffcf2 !important;
 }
 
 .comment-media-btn {
