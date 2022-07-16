@@ -586,3 +586,10 @@ td {
 .user-follow {
     text-align: center;
 }
+
+.n-likes {
+    display: inline-block;
+    vertical-align: -webkit-baseline-middle;
+    font-size: 15px;
+    font-weight: 700;
+}

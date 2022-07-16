@@ -123,7 +123,6 @@
                     <p id="media-comment-p" class="comment-p">{{item.comment}}</p>
                     <p hidden>{{item.comment_id}}</p>
                     <p hidden id="media-user-id-p">{{item.user.user_id}}</p>
-                    <p id="number-likes-{{item.comment_id}}-p" class="comment-p">{{item.likes|length}}</p>
 
 
                     {%if 'user_email' in session %}
@@ -142,6 +141,8 @@
                     {%endfor%}
                     <button type="button" id="comment{{item.comment_id}}-user{{item.user.user_id}}" value="{{item.comment_id}}" class="btn btn-outline-danger like-btn btn-action" aria-label="Like/Unlike comment">{{ns.like}}</button>
                     {%endif%}
+                    <p id="number-likes-{{item.comment_id}}-p" class="comment-p n-likes">{{item.likes|length}}</p>
+
                 </div>
             </div>
             {%endfor%}
