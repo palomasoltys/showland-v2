@@ -16,7 +16,7 @@
 
 /* BODY */
 body {
-    min-height: 100vh;
+    height: 100vh;
     background-color: black;
     background-image: url(/static/img/interestellar1-bg\ .png);
     -webkit-background-size: cover;
@@ -435,7 +435,7 @@ margin: auto;
     font-weight: 700;
 }
 
-.save-for-later-btn:hover {
+.btn:hover {
     color: #eb5e28 !important;
     background-color: #fffcf2 !important;
 }
@@ -452,10 +452,10 @@ margin: auto;
     font-weight: 700;
 }
 
-.comment-media-btn:hover {
+/* .comment-media-btn:hover {
     color: white !important;
     transition: 0.7s;
-}
+} */
 
 .comment-label {
     padding: 10px;
@@ -609,5 +609,6 @@ td {
     font-weight: bold;
     color:white !important;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 60px;
+    
 }

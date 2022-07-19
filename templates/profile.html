@@ -7,176 +7,175 @@
 {% endblock %}
 
 {% block body %}
-
-{%if user.email == session['user_email']%}
 <div class="full-content full-page">
+    {%if user.email == session['user_email']%}
     <div class="user-g mb-4">
         <h2 style="padding-top: 50px;">Hey {{user.full_name}}!</h2>
 
         {%else%}
-        <h2 class="mb-0" style="padding-top: 50px; background: rgba(0, 0, 0, 0.8);"">{{user.full_name}}'s profile</h2>
-        <div class=" user-follow" style="background: rgba(0, 0, 0, 0.8);">
-            {%if is_following %}
-            {% set ns = namespace(follow='Unfollow') %}
+        <h2 class="mb-0" style="padding-top: 50px;"">{{user.full_name}}'s profile</h2>
+        <div class=" user-follow">
+            {%if not is_following %}
+            {% set ns = namespace(follow='Follow') %}
 
             {%else%}
-            {% set ns.follow = 'Follow' %}
+            {% set ns.follow = 'Unfollow' %}
             {%endif%}
             <button type="button" id="follow-user" value="{{user.user_id}}" class="btn text-center follow-btn" aria-label="Follow user">{{ns.follow}}</button>
     </div>
 
 
     {%endif%}
-</div>
-
-<div class="profile-line" style="background: rgba(0, 0, 0, 0.8);">
-    <table width=" 100%">
-        <td>
-            <hr />
-        </td>
-        <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Activity</td>
-        <td>
-            <hr />
-        </td>
-    </table>
-    <div class="container">
-        <div class="row mb-5 mt-5 activity">
-
-            {% for item in user.comments %}
-            {% if item.comment|length > 0 %}
-            <div class="col-4">
-                <div class="p-3 comment-item text-center user-comments">
-                    {%if item.media.imdb_id[0] == 't' %}
-                    <a class="mb-3" href="/media/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
-                    {%elif item.media.media_type == 'series'%}
-                    <a class="mb-3" href="/media/popular/shows/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
-                    {%else%}
-                    <a class="mb-3" href="/media/popular/movies/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
-                    {%endif%}
-                    {%if item.review == 1%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐</p>
-                    {%elif item.review == 2 %}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐</p>
-                    {%elif item.review == 3%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐</p>
-                    {%elif item.review == 4 %}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐</p>
-                    {%else%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐⭐</p>
-                    {%endif%}
-                    <img class="mt-2 mb-3" src="{{item.media.poster_path}}">
 
 
+    <div class="profile-line">
+        <table width=" 100%">
+            <td>
+                <hr />
+            </td>
+            <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Activity</td>
+            <td>
+                <hr />
+            </td>
+        </table>
+        <div class="container">
+            <div class="row mb-5 mt-5 activity">
 
-                    <p class="comment-p">Comment: {{item.comment}}</p>
+                {% for item in user.comments %}
+                {% if item.comment|length > 0 %}
+                <div class="col-4">
+                    <div class="p-3 comment-item text-center user-comments">
+                        {%if item.media.imdb_id[0] == 't' %}
+                        <a class="mb-3" href="/media/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
+                        {%elif item.media.media_type == 'series'%}
+                        <a class="mb-3" href="/media/popular/shows/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
+                        {%else%}
+                        <a class="mb-3" href="/media/popular/movies/details/{{item.media.imdb_id}}">{{item.media.title}}</a>
+                        {%endif%}
+                        {%if item.review == 1%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐</p>
+                        {%elif item.review == 2 %}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐</p>
+                        {%elif item.review == 3%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐</p>
+                        {%elif item.review == 4 %}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐</p>
+                        {%else%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐⭐</p>
+                        {%endif%}
+                        <img class="mt-2 mb-3" src="{{item.media.poster_path}}">
 
-                    {%for like in item.likes%}
-                    {%if like == item.likes[0]%}
-                    <p class="comment-p n-likes">{{like.query.filter_by(comment_id=like.comment_id).count()}}</p>
 
-                    {%endif%}
-                    {%endfor%}
 
-                    <button type="button" id="comment-{{item.comment_id}}-user-{{item.user_id}}" value="{{item.comment_id}}" class="btn like-btn btn-action profile-btn">Like</button>
-                    <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn delete-comment-btn btn-action profile-btn">Delete</button>
-                    <p hidden>{{item.media.imdb_id}}</p>
+                        <p class="comment-p">Comment: {{item.comment}}</p>
 
+                        {%for like in item.likes%}
+                        {%if like == item.likes[0]%}
+                        <p class="comment-p n-likes">{{like.query.filter_by(comment_id=like.comment_id).count()}}</p>
+
+                        {%endif%}
+                        {%endfor%}
+
+                        <button type="button" id="comment-{{item.comment_id}}-user-{{item.user_id}}" value="{{item.comment_id}}" class="btn like-btn btn-action profile-btn">Like</button>
+                        <button type="button" id="delete{{item.comment_id}}" value="{{item.comment_id}}" class="btn delete-comment-btn btn-action profile-btn">Delete</button>
+                        <p hidden>{{item.media.imdb_id}}</p>
+
+                    </div>
                 </div>
-            </div>
-            {%endif%}
-            {%endfor%}
+                {%endif%}
+                {%endfor%}
 
+            </div>
         </div>
     </div>
-</div>
 
-<div class="profile-line" style="background: rgba(0, 0, 0, 0.8);">
-    <table width=" 100%">
-        <td>
-            <hr />
-        </td>
-        <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Saved For Later</td>
-        <td>
-            <hr />
-        </td>
-    </table>
-    <div class="container">
-        <div class="row mb-5 mt-3 save-for-later text-center">
-            {%for media in user.savelater%}
-            <div class="col-3">
-                <div class="p-3">
-                    {%if media.media.imdb_id[0] == 't' %}
-                    <a href="/media/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
-                    {%elif media.media.media_type == 'series'%}
-                    <a href="/media/popular/shows/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
-                    {%elif media.media.media_type == 'movie'%}
-                    <a href="/media/popular/movies/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
-                    {%endif%}
-                    <img class="mt-3 img img-fluid" src="{{media.media.poster_path}}">
+    <div class="profile-line">
+        <table width=" 100%">
+            <td>
+                <hr />
+            </td>
+            <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Saved For Later</td>
+            <td>
+                <hr />
+            </td>
+        </table>
+        <div class="container">
+            <div class="row mb-5 mt-3 save-for-later text-center">
+                {%for media in user.savelater%}
+                <div class="col-3">
+                    <div class="p-3">
+                        {%if media.media.imdb_id[0] == 't' %}
+                        <a href="/media/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
+                        {%elif media.media.media_type == 'series'%}
+                        <a href="/media/popular/shows/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
+                        {%elif media.media.media_type == 'movie'%}
+                        <a href="/media/popular/movies/details/{{media.media.imdb_id}}">{{media.media.title}}</a>
+                        {%endif%}
+                        <img class="mt-3 img img-fluid" src="{{media.media.poster_path}}">
+                    </div>
                 </div>
-            </div>
-            {%endfor%}
+                {%endfor%}
 
+            </div>
         </div>
     </div>
-</div>
 
-{%if user.email == session['user_email']%}
-<div class="profile-line" style="background: rgba(0, 0, 0, 0.8);">
-    <table width=" 100%">
-        <td>
-            <hr />
-        </td>
-        <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Friend's Activities</td>
-        <td>
-            <hr />
-        </td>
-    </table>
-    {%if user.following|length == 0%}
-    <p class="no-follow text-center"><i>You are not following anyone</i></p>
-    {%else%}
-    <p class="text-center mt-2" id="no-comment">What are you friends thoughts about their favorite movie or show?</p>
-    <div class="container">
-        <div class="row mb-5 mt-5 text-center">
-            {%for following in user.following%}
-            <a class="mb-5" href="/profile/{{following.user_id}}/friend">
-                <h5>{{following.full_name}}</h5>
-            </a>
+    {%if user.email == session['user_email']%}
+    <div class="profile-line">
+        <table width=" 100%">
+            <td>
+                <hr />
+            </td>
+            <td class="popular-week latest-comment profile" style="width:1px; padding: 0 10px; white-space: nowrap;">Friend's Activities</td>
+            <td>
+                <hr />
+            </td>
+        </table>
+        {%if user.following|length == 0%}
+        <p class="no-follow text-center"><i>You are not following anyone</i></p>
+        {%else%}
+        <p class="text-center mt-2" id="no-comment">What are you friends thoughts about their favorite movie or show?</p>
+        <div class="container">
+            <div class="row mb-5 mt-5 text-center">
+                {%for following in user.following%}
+                <a class="mb-5" href="/profile/{{following.user_id}}/friend">
+                    <h5>{{following.full_name}}</h5>
+                </a>
 
-            {%for comment in following.comments%}
-            <div class="col-4">
-                <div class="p-3 comment-item text-center user-comments">
-                    {%if comment.media.imdb_id[0] == 't' %}
-                    <a class="mb-3" href="/media/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
-                    {%elif comment.media.media_type == 'series'%}
-                    <a class="mb-3" href="/media/popular/shows/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
-                    {%elif comment.media.media_type == 'movie'%}
-                    <a class="mb-3" href="/media/popular/movies/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
-                    {%endif%}
-                    {%if comment.review == 1%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐</p>
-                    {%elif comment.review == 2 %}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐</p>
-                    {%elif comment.review == 3%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐</p>
-                    {%elif comment.review == 4 %}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐</p>
-                    {%else%}
-                    <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐⭐</p>
-                    {%endif%}
-                    <img class="mt-2 mb-3" src="{{comment.media.poster_path}}">
+                {%for comment in following.comments%}
+                <div class="col-4">
+                    <div class="p-3 comment-item text-center user-comments">
+                        {%if comment.media.imdb_id[0] == 't' %}
+                        <a class="mb-3" href="/media/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
+                        {%elif comment.media.media_type == 'series'%}
+                        <a class="mb-3" href="/media/popular/shows/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
+                        {%elif comment.media.media_type == 'movie'%}
+                        <a class="mb-3" href="/media/popular/movies/details/{{comment.media.imdb_id}}">{{comment.media.title}}</a>
+                        {%endif%}
+                        {%if comment.review == 1%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐</p>
+                        {%elif comment.review == 2 %}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐</p>
+                        {%elif comment.review == 3%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐</p>
+                        {%elif comment.review == 4 %}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐</p>
+                        {%else%}
+                        <p class="mb-3"><span class="rated">You Rated:</span> ⭐⭐⭐⭐⭐</p>
+                        {%endif%}
+                        <img class="mt-2 mb-3" src="{{comment.media.poster_path}}">
 
-                    <p class="comment-p">Comment: {{comment.comment}}</p>
+                        <p class="comment-p">Comment: {{comment.comment}}</p>
+                    </div>
                 </div>
-            </div>
-            {%endfor%}
+                {%endfor%}
 
-            {%endfor%}
+                {%endfor%}
+            </div>
         </div>
+        {%endif%}
+        {%endif%}
     </div>
-    {%endif%}
-    {%endif%}
-</div>
 </div>
 <script src="/static/js/profile.js"> </script>
 
