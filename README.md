@@ -1,3 +1,4 @@
+
 ![Logo](https://i.ibb.co/tq6GHtm/Showland-logo-black.png)
 
 
@@ -32,20 +33,20 @@ ShowLand is a web application where you can comment, like and review your favori
 ### Comment, Like and Delete Comments, Save for Later
 - If the user is logged in, they can leave a comment as well as save it to watch later. 
 - For these features, a POST request is made and the media information is stored in the PostgreSQL database, reducing the number of API calls, which improves the performance of the app.
-![comment](https://i.ibb.co/pL49SW2/Screen-Shot-2023-01-27-at-8-48-36-PM.png)
+![Comment](https://i.ibb.co/pL49SW2/Screen-Shot-2023-01-27-at-8-48-36-PM.png)
 
-![comment2](https://i.ibb.co/nbCbkBB/Screen-Shot-2023-01-27-at-8-49-07-PM.png)
+![Comment2](https://i.ibb.co/nbCbkBB/Screen-Shot-2023-01-27-at-8-49-07-PM.png)
 - For more interaction, a like and a delete button were implemented within the comment.
 - For the like, I queried the database using SQLAlchemy to determine if a user had already liked a comment and toggle the button between "Like" and "Unlike" accordingly. Then, when the user clicks the button, an AJAX call is used to update the number of likes without refreshing the page.
 - Similarly, for the delete button, the database is checked to see if there are likes related to the comment, and if there are, the like is deleted first, then the comment itself.
-![like](https://i.ibb.co/prYjy2T/Screen-Shot-2023-01-27-at-8-50-12-PM.png)
+![Like](https://i.ibb.co/prYjy2T/Screen-Shot-2023-01-27-at-8-50-12-PM.png)
 ### Profile
 - In their profiles, users can see all their activities as well as their friends' activities, if they follow them.
-![profile](https://i.ibb.co/hR1gKw5/Screen-Shot-2023-01-27-at-8-51-12-PM.png)
+![Profile](https://i.ibb.co/hR1gKw5/Screen-Shot-2023-01-27-at-8-51-12-PM.png)
 
-![save-for-later](https://i.ibb.co/7JyH182/Screen-Shot-2023-01-27-at-8-51-28-PM.png)
+![Save-for-later](https://i.ibb.co/7JyH182/Screen-Shot-2023-01-27-at-8-51-28-PM.png)
 
-![friends](https://i.ibb.co/ww4R92D/Screen-Shot-2023-01-27-at-8-51-57-PM.png)
+![Friends](https://i.ibb.co/ww4R92D/Screen-Shot-2023-01-27-at-8-51-57-PM.png)
 
 
 
